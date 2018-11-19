@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".SuaActivity"
+    android:orientation="vertical"
+    android:layout_margin="8dp">
+    <EditText
+        android:id="@+id/edName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Tên chi phí"/>
+    <EditText
+        android:id="@+id/edSoluong"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Số lượng"/>
+    <EditText
+        android:id="@+id/edGiatien"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Giá tiền"/>
+    <EditText
+        android:id="@+id/edNgaychi"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Ngày chi"/>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <Button
+            android:id="@+id/btnSua"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Sửa"
+            android:onClick="Sua"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+        <Button
+            android:id="@+id/btnHuy"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Hủy"
+            android:textAllCaps="false"
+            android:layout_weight="1"/>
+    </LinearLayout>
+    <Button
+        android:id="@+id/btnShow"
+        android:onClick="Show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Show"
+        android:textAllCaps="false" />
+
+</LinearLayout>
