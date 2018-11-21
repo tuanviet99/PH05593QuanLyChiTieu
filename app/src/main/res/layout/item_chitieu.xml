@@ -3,38 +3,32 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal">
+    android:orientation="horizontal"
+    android:layout_margin="8dp">
 
     <TextView
         android:id="@+id/tvName"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Ăn sáng"
-        android:layout_weight="2"/>
+        android:text="Tên chi phí"
+        android:layout_weight="1"/>
     <TextView
         android:id="@+id/tvSoluong"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="1"
-        android:layout_weight="2"/>
+        android:text="Số lượng"
+        android:layout_weight="1"/>
     <TextView
         android:id="@+id/tvGiatien"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20000"
+        android:text="Giá tiền"
         android:layout_weight="1"/>
     <TextView
         android:id="@+id/tvNgaychi"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="20/10/2018"
-        android:layout_weight="2"/>
-    <ImageView
-        android:id="@+id/imgEdit"
-        android:onClick="Edit"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:src="@drawable/ic_edit_black_24dp"
+        android:text="Ngày chi"
         android:layout_weight="1"/>
     <ImageView
         android:id="@+id/imgDel"

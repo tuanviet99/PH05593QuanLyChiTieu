@@ -20,7 +20,7 @@ public class ChiTieuDAO {
     public static final String TABLE_NAME = "ChiTieu";
     public static final String SQL_CHI_TIEU = "CREATE TABLE ChiTieu(tenChiphi text primary key, soLuong text, giaTien text, ngayChi)";
     public static final String TAG = "StundentDAO";
-    SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     public ChiTieuDAO(Context context) {
         dbHelper = new DatabaseHelper(context);
@@ -33,13 +33,19 @@ public class ChiTieuDAO {
         values.put("soLuong", chiTieu.getSoluong());
         values.put("giaTien", chiTieu.getGiatien());
         values.put("ngayChi", sdf.format(chiTieu.getNgaychi()));
-        try {
-            if (db.insert(TABLE_NAME, null, values) == -1) {
+        if (checkPrimaryKey(chiTieu.getChitieuName())) {
+            int result = db.update(TABLE_NAME, values, "tenChiphi=?", new String[]{chiTieu.getChitieuName()});
+            if (result == 0) {
                 return -1;
             }
-
-        } catch (Exception e) {
-            Log.e(TAG, e.toString());
+        } else {
+            try {
+                if (db.insert(TABLE_NAME, null, values) == -1) {
+                    return -1;
+                }
+            } catch (Exception ex) {
+                Log.e(TAG, ex.toString());
+            }
         }
         return 1;
     }
@@ -64,6 +70,28 @@ public class ChiTieuDAO {
         c.close();
         return nv;
     }
+    public boolean checkPrimaryKey(String strPrimaryKey) {
+        //SELECT
+        String[] columns = {"tenChiphi"};
+        //WHERE clause
+        String selection = "tenChiphi=?";
+        //WHERE clause arguments
+        String[] selectionArgs = {strPrimaryKey};
+        Cursor c = null;
+        try {
+            c = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
+            c.moveToFirst();
+            int i = c.getCount();
+            c.close();
+            if (i <= 0) {
+                return false;
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
     public int updateChiTieu(ChiTieu chiTieu) {
         ContentValues values = new ContentValues();
         values.put("tenChiphi", chiTieu.getChitieuName());
@@ -75,6 +103,25 @@ public class ChiTieuDAO {
             return -1;
         }
         return 1;
+    }
+    public double getChiTieuTheoNgay() {
+        double chiTieu = 0;
+        String sSQL = "SELECT SUM(giaTien*soLuong) FROM ChiTieu  " + " where ngayChi = date('now') GROUP BY tenChiphi";
+        Cursor c = db.rawQuery(sSQL, null);
+        c.moveToFirst();
+        while (c.isAfterLast() == false) {
+            chiTieu = c.getDouble(0);
+            c.moveToNext();
+        }
+        c.close();
+        return chiTieu;
+    }
+    public double getChiTieuTheoThang() {
+        double chiTieu = 0;
+        String sSQL = "SELECT SUM(giaTien * soLuong) FROM ChiTieu  " + " where ngayChi = date('now') GROUP BY tenChiphi";
+        Cursor c = db.rawQuery(sSQL, null);
+        c.close();
+        return chiTieu;
     }
 
     //delete

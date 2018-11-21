@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import com.example.admin.ph05593quanlychitieu.Adapter.ChiTieuAdapter;
@@ -38,6 +39,20 @@ public class QuanLyChiTieuActivity extends AppCompatActivity {
         }
         chiTieuAdapter = new ChiTieuAdapter(this, dsChiTieu);
         lvChitieu.setAdapter(chiTieuAdapter);
+        lvChitieu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
+                ChiTieu chiTieu = (ChiTieu) parent.getItemAtPosition(position);
+                Intent intent = new Intent(getApplicationContext(), ThemActivity.class);
+                Bundle b = new Bundle();
+                b.putString("TENCHITIEU", chiTieu.getChitieuName());
+                b.putString("SOLUONG", String.valueOf(chiTieu.getSoluong()));
+                b.putString("GIATIEN", String.valueOf(chiTieu.getGiatien()));
+                b.putString("NGAYCHI", String.valueOf(chiTieu.getNgaychi()));
+                intent.putExtras(b);
+                startActivity(intent);
+            }
+        });
     }
 
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -55,10 +70,5 @@ public class QuanLyChiTieuActivity extends AppCompatActivity {
                 return (true);
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    public void Edit(View view) {
-        Intent intent=new Intent(getApplicationContext(),SuaActivity.class);
-        startActivity(intent);
     }
 }

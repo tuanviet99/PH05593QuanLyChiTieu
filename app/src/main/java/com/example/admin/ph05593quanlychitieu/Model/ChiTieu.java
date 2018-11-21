@@ -49,4 +49,14 @@ public class ChiTieu {
     public void setNgaychi(Date ngaychi) {
         this.ngaychi = ngaychi;
     }
+
+    @Override
+    public String toString() {
+        return "ChiTieu{" +
+                "chitieuName='" + chitieuName + '\'' +
+                ", soluong=" + soluong +
+                ", giatien=" + giatien +
+                ", ngaychi=" + ngaychi +
+                '}';
+    }
 }

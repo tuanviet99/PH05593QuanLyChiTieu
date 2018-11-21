@@ -1,9 +1,11 @@
 package com.example.admin.ph05593quanlychitieu;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -14,6 +16,8 @@ import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
 import java.util.List;
 
 public class ThemActivity extends AppCompatActivity {
@@ -23,9 +27,6 @@ public class ThemActivity extends AppCompatActivity {
     private EditText edNgaychi;
     private ChiTieuDAO chiTieuDAO;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
-    public static List<ChiTieu> dsChiTieu = new ArrayList<>();
-    ChiTieuAdapter chiTieuAdapter;
-    ListView lvChitieu;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,15 +36,22 @@ public class ThemActivity extends AppCompatActivity {
         edSoluong = (EditText) findViewById(R.id.edSoluong);
         edGiatien = (EditText) findViewById(R.id.edGiatien);
         edNgaychi = (EditText) findViewById(R.id.edNgaychi);
-        lvChitieu=findViewById(R.id.lvChitieu);
-
+        Intent in = getIntent();
+        Bundle b = in.getExtras();
+        if (b != null) {
+            edName.setText(b.getString("TENCHITIEU"));
+            edSoluong.setText(b.getString("SOLUONG"));
+            edGiatien.setText(b.getString("GIATIEN"));
+            edNgaychi.setText(b.getString("NGAYCHI"));
+        }
     }
+
 
 
     public void AddChitieu(View view) {
         chiTieuDAO = new ChiTieuDAO(ThemActivity.this);
         try {
-        ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()), sdf.parse(edNgaychi.getText().toString()));
+            ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()), sdf.parse(edNgaychi.getText().toString()));
             if (validateForm() > 0) {
                 if (chiTieuDAO.insertChiTieu(chiTieu) > 0) {
                     Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -70,4 +78,5 @@ public class ThemActivity extends AppCompatActivity {
         }
         return check;
     }
+
 }

@@ -11,7 +11,10 @@ import android.widget.Toast;
 import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
 import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.List;
 
 public class SuaActivity extends AppCompatActivity {
 
@@ -23,8 +26,10 @@ public class SuaActivity extends AppCompatActivity {
     private Button btnHuy;
     private Button btnShow;
     private ChiTieuDAO chiTieuDAO;
-    String Name,Soluong,Giatien,Ngaychi;
+    String Name, Soluong, Giatien, Ngaychi;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
+    public static List<ChiTieu> dsChiTieu = new ArrayList<>();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -36,7 +41,7 @@ public class SuaActivity extends AppCompatActivity {
         btnSua = (Button) findViewById(R.id.btnSua);
         btnHuy = (Button) findViewById(R.id.btnHuy);
         btnShow = (Button) findViewById(R.id.btnShow);
-        chiTieuDAO=new ChiTieuDAO(this);
+        chiTieuDAO = new ChiTieuDAO(this);
 
 
     }
@@ -44,11 +49,6 @@ public class SuaActivity extends AppCompatActivity {
     public void Show(View view) {
         finish();
     }
-
-    public void Sua(View view) {
-        ChiTieu chiTieu=new ChiTieu();
-        if (chiTieuDAO.updateChiTieu(chiTieu)>0) {
-            Toast.makeText(getApplicationContext(), "Lưu thành công", Toast.LENGTH_SHORT).show();
-        }
-    }
 }
+
+

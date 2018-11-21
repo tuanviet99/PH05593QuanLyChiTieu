@@ -6,6 +6,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import java.io.InputStream;
+
 public class MenuActivity extends AppCompatActivity {
 
     private Button btnQuanlychitieu;
@@ -26,5 +28,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void ThongKe(View view) {
+        Intent intent1=new Intent(getApplicationContext(),ThongKeActivity.class);
+        startActivity(intent1);
     }
 }

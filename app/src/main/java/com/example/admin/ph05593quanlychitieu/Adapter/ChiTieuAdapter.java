@@ -20,6 +20,7 @@ import com.example.admin.ph05593quanlychitieu.R;
 import com.example.admin.ph05593quanlychitieu.SuaActivity;
 import com.example.admin.ph05593quanlychitieu.ThemActivity;
 
+import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ChiTieuAdapter extends BaseAdapter {
@@ -27,6 +28,7 @@ public class ChiTieuAdapter extends BaseAdapter {
     private LayoutInflater inflater;
     private Activity context;
     private ChiTieuDAO chiTieuDAO;
+    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
     public ChiTieuAdapter(Activity context, List<ChiTieu> stundents) {
         this.chiTieuList = stundents;
@@ -62,7 +64,6 @@ public class ChiTieuAdapter extends BaseAdapter {
             holder.tvSoluong = convertView.findViewById(R.id.tvSoluong);
             holder.tvGiatien = convertView.findViewById(R.id.tvGiatien);
             holder.tvNgaychi = convertView.findViewById(R.id.tvNgaychi);
-            holder.imgEdit = convertView.findViewById(R.id.imgEdit);
             holder.imgDel = convertView.findViewById(R.id.imgDel);
 
             holder.imgDel.setOnClickListener(new View.OnClickListener() {
@@ -73,8 +74,6 @@ public class ChiTieuAdapter extends BaseAdapter {
                     notifyDataSetChanged();
                 }
             });
-
-
             convertView.setTag(holder);
         } else {  //Đã tạo ra
             holder = (ViewHolder) convertView.getTag();
@@ -82,6 +81,9 @@ public class ChiTieuAdapter extends BaseAdapter {
         //thiết lập giá trị cho item
         ChiTieu chiTieu = chiTieuList.get(position);
         holder.tvName.setText(chiTieu.getChitieuName());
+        holder.tvSoluong.setText(chiTieu.getSoluong()+"");
+        holder.tvGiatien.setText(chiTieu.getGiatien()+"");
+        holder.tvNgaychi.setText(sdf.format(chiTieu.getNgaychi()));
         return convertView;
     }
 
