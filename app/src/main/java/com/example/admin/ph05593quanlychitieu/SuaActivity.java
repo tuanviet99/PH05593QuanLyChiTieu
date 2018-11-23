@@ -9,8 +9,9 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
-import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
+import com.example.admin.ph05593quanlychitieu.common.Common;
+import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
+import com.example.admin.ph05593quanlychitieu.model.ChiTieu;
 
 import java.text.SimpleDateFormat;
 
@@ -44,7 +45,7 @@ public class SuaActivity extends AppCompatActivity {
             edName.setText(b.getString("TENCHITIEU"));
             edSoluong.setText(b.getString("SOLUONG"));
             edGiatien.setText(b.getString("GIATIEN"));
-            edNgaychi.setText(b.getString("NGAYCHI"));
+            edNgaychi.setText(Common.convertDate(b.getString("NGAYCHI")));
         }
     }
 
