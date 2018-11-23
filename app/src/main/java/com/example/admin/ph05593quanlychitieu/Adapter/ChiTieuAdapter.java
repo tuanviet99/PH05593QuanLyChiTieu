@@ -2,23 +2,18 @@ package com.example.admin.ph05593quanlychitieu.Adapter;
 
 import android.app.Activity;
 import android.content.Context;
-import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
 import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
-import com.example.admin.ph05593quanlychitieu.QuanLyChiTieuActivity;
 import com.example.admin.ph05593quanlychitieu.R;
-import com.example.admin.ph05593quanlychitieu.SuaActivity;
-import com.example.admin.ph05593quanlychitieu.ThemActivity;
 
 import java.text.SimpleDateFormat;
 import java.util.List;
@@ -30,8 +25,8 @@ public class ChiTieuAdapter extends BaseAdapter {
     private ChiTieuDAO chiTieuDAO;
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public ChiTieuAdapter(Activity context, List<ChiTieu> stundents) {
-        this.chiTieuList = stundents;
+    public ChiTieuAdapter(Activity context, List<ChiTieu> chiTieus) {
+        this.chiTieuList = chiTieus;
         this.context = context;
         this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         chiTieuDAO = new ChiTieuDAO(context);
@@ -69,7 +64,7 @@ public class ChiTieuAdapter extends BaseAdapter {
             holder.imgDel.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View view) {
-                    chiTieuDAO.deleteChiTieuByID(chiTieuList.get(position).getChitieuName());
+                    chiTieuDAO.deleteChiTieuByID(chiTieuList.get(position).getTenChiphi());
                     chiTieuList.remove(position);
                     notifyDataSetChanged();
                 }
@@ -80,16 +75,16 @@ public class ChiTieuAdapter extends BaseAdapter {
         }
         //thiết lập giá trị cho item
         ChiTieu chiTieu = chiTieuList.get(position);
-        holder.tvName.setText(chiTieu.getChitieuName());
-        holder.tvSoluong.setText(chiTieu.getSoluong()+"");
-        holder.tvGiatien.setText(chiTieu.getGiatien()+"");
-        holder.tvNgaychi.setText(sdf.format(chiTieu.getNgaychi()));
+        holder.tvName.setText(chiTieu.getTenChiphi());
+        holder.tvSoluong.setText(chiTieu.getSoLuong()+"");
+        holder.tvGiatien.setText(chiTieu.getGiaTien()+"");
+        holder.tvNgaychi.setText((chiTieu.getNgayChi()));
         return convertView;
     }
 
 
     public static class ViewHolder {
-        public ImageView imgEdit, imgDel;
+        public ImageView imgDel;
         public TextView tvName, tvSoluong, tvGiatien, tvNgaychi;
     }
 

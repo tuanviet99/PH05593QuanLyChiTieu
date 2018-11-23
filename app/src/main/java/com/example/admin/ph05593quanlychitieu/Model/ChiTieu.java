@@ -3,60 +3,61 @@ package com.example.admin.ph05593quanlychitieu.Model;
 import java.util.Date;
 
 public class ChiTieu {
-    private String chitieuName;
-    private int soluong;
-    private int giatien;
-    private Date ngaychi;
+    private String tenChiphi;
+    private int soLuong;
+    private int giaTien;
+    private String ngayChi;
 
-    public ChiTieu(String chitieuName, int soluong, int giatien, Date ngaychi) {
-        this.chitieuName = chitieuName;
-        this.soluong = soluong;
-        this.giatien = giatien;
-        this.ngaychi = ngaychi;
+    public ChiTieu(String tenChiphi, int soLuong, int giaTien, String ngayChi) {
+        this.tenChiphi = tenChiphi;
+        this.soLuong = soLuong;
+        this.giaTien = giaTien;
+        this.ngayChi = ngayChi;
     }
 
     public ChiTieu() {
 
     }
-    public String getChitieuName() {
-        return chitieuName;
+
+    public String getTenChiphi() {
+        return tenChiphi;
     }
 
-    public void setChitieuName(String chitieuName) {
-        this.chitieuName = chitieuName;
+    public void setTenChiphi(String tenChiphi) {
+        this.tenChiphi = tenChiphi;
     }
 
-    public int getSoluong() {
-        return soluong;
+    public int getSoLuong() {
+        return soLuong;
     }
 
-    public void setSoluong(int soluong) {
-        this.soluong = soluong;
+    public void setSoLuong(int soLuong) {
+        this.soLuong = soLuong;
     }
 
-    public int getGiatien() {
-        return giatien;
+    public int getGiaTien() {
+        return giaTien;
     }
 
-    public void setGiatien(int giatien) {
-        this.giatien = giatien;
+    public void setGiaTien(int giaTien) {
+        this.giaTien = giaTien;
     }
 
-    public Date getNgaychi() {
-        return ngaychi;
+    public String getNgayChi() {
+        return ngayChi;
     }
 
-    public void setNgaychi(Date ngaychi) {
-        this.ngaychi = ngaychi;
+    public void setNgayChi(String ngayChi) {
+        this.ngayChi = ngayChi;
     }
 
     @Override
     public String toString() {
         return "ChiTieu{" +
-                "chitieuName='" + chitieuName + '\'' +
-                ", soluong=" + soluong +
-                ", giatien=" + giatien +
-                ", ngaychi=" + ngaychi +
+                "tenChiphi='" + tenChiphi + '\'' +
+                ", soLuong=" + soLuong +
+                ", giaTien=" + giaTien +
+                ", ngayChi=" + ngayChi +
                 '}';
     }
 }

@@ -32,23 +32,22 @@ public class QuanLyChiTieuActivity extends AppCompatActivity {
 
         lvChitieu = findViewById(R.id.lvChitieu);
         chiTieuDAO = new ChiTieuDAO(QuanLyChiTieuActivity.this);
-        try {
-            dsChiTieu = chiTieuDAO.getALLChiTieu();
-        } catch (ParseException e) {
-            e.printStackTrace();
-        }
+
+        dsChiTieu = chiTieuDAO.getALLChiTieu();
+
         chiTieuAdapter = new ChiTieuAdapter(this, dsChiTieu);
         lvChitieu.setAdapter(chiTieuAdapter);
         lvChitieu.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
                 ChiTieu chiTieu = (ChiTieu) parent.getItemAtPosition(position);
-                Intent intent = new Intent(getApplicationContext(), ThemActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SuaActivity.class);
                 Bundle b = new Bundle();
-                b.putString("TENCHITIEU", chiTieu.getChitieuName());
-                b.putString("SOLUONG", String.valueOf(chiTieu.getSoluong()));
-                b.putString("GIATIEN", String.valueOf(chiTieu.getGiatien()));
-                b.putString("NGAYCHI", String.valueOf(chiTieu.getNgaychi()));
+                b.putString("TENCHITIEU", chiTieu.getTenChiphi());
+                b.putString("SOLUONG", String.valueOf(chiTieu.getSoLuong()));
+                b.putString("GIATIEN", String.valueOf(chiTieu.getGiaTien()));
+                b.putString("NGAYCHI", String.valueOf(chiTieu.getNgayChi()));
+
                 intent.putExtras(b);
                 startActivity(intent);
             }

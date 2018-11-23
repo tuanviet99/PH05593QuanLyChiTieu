@@ -36,22 +36,16 @@ public class ThemActivity extends AppCompatActivity {
         edSoluong = (EditText) findViewById(R.id.edSoluong);
         edGiatien = (EditText) findViewById(R.id.edGiatien);
         edNgaychi = (EditText) findViewById(R.id.edNgaychi);
-        Intent in = getIntent();
-        Bundle b = in.getExtras();
-        if (b != null) {
-            edName.setText(b.getString("TENCHITIEU"));
-            edSoluong.setText(b.getString("SOLUONG"));
-            edGiatien.setText(b.getString("GIATIEN"));
-            edNgaychi.setText(b.getString("NGAYCHI"));
-        }
+
     }
 
 
 
-    public void AddChitieu(View view) {
+    public void addChitieu(View view) {
         chiTieuDAO = new ChiTieuDAO(ThemActivity.this);
         try {
-            ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()), sdf.parse(edNgaychi.getText().toString()));
+            ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()),
+                    (edNgaychi.getText().toString()));
             if (validateForm() > 0) {
                 if (chiTieuDAO.insertChiTieu(chiTieu) > 0) {
                     Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
@@ -71,7 +65,7 @@ public class ThemActivity extends AppCompatActivity {
     public int validateForm() {
 
         int check = 1;
-        if (edName.getText().length() == 0 || edSoluong.getText().length() == 0 || edGiatien.getText().length() == 0 || edGiatien.getText().length() == 0 || edNgaychi.getText().length() == 0) {
+        if (edName.getText().length() == 0 || edSoluong.getText().length() == 0 || edGiatien.getText().length() == 0 || edGiatien.getText().length() == 0 || edNgaychi.getText().length() == 0 || edNgaychi.getText().length()<10) {
             Toast.makeText(getApplicationContext(), "Bạn phải nhập đầy đủ thông ", Toast.LENGTH_SHORT).show();
             check = -1;
         } else {

@@ -18,11 +18,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Số lượng"/>
+
     <EditText
         android:id="@+id/edGiatien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Giá tiền"/>
+        android:hint="Giá tiền" />
     <EditText
         android:id="@+id/edNgaychi"
         android:layout_width="match_parent"
@@ -37,7 +38,7 @@
             android:layout_height="wrap_content"
             android:text="Thêm"
             android:textAllCaps="false"
-            android:onClick="AddChitieu"
+            android:onClick="addChitieu"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btnHuy"

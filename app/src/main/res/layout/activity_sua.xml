@@ -5,8 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".SuaActivity"
-    android:orientation="vertical"
-    android:layout_margin="8dp">
+    android:orientation="vertical">
+
     <EditText
         android:id="@+id/edName"
         android:layout_width="match_parent"
@@ -17,11 +17,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:hint="Số lượng"/>
+
     <EditText
         android:id="@+id/edGiatien"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Giá tiền"/>
+        android:hint="Giá tiền" />
     <EditText
         android:id="@+id/edNgaychi"
         android:layout_width="match_parent"
@@ -31,11 +32,12 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
         <Button
-            android:id="@+id/btnSua"
+            android:id="@+id/btnThem"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Sửa"
             android:textAllCaps="false"
+            android:onClick="editChitieu"
             android:layout_weight="1"/>
         <Button
             android:id="@+id/btnHuy"

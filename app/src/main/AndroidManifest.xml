@@ -20,8 +20,8 @@
         <activity android:name=".MenuActivity" />
         <activity android:name=".QuanLyChiTieuActivity" />
         <activity android:name=".ThemActivity" />
-        <activity android:name=".SuaActivity" />
-        <activity android:name=".ThongKeActivity"></activity>
+        <activity android:name=".ThongKeActivity" />
+        <activity android:name=".SuaActivity"></activity>
     </application>
 
 </manifest>
