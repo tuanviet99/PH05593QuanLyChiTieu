@@ -1,9 +1,10 @@
-package com.example.admin.ph05593quanlychitieu.Adapter;
+package com.example.admin.ph05593quanlychitieu.adapter;
 
 import android.app.Activity;
 import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,24 +12,26 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
-import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
+import com.example.admin.ph05593quanlychitieu.common.Common;
+import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
+import com.example.admin.ph05593quanlychitieu.model.ChiTieu;
 import com.example.admin.ph05593quanlychitieu.R;
 
+import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.List;
 
 public class ChiTieuAdapter extends BaseAdapter {
     private List<ChiTieu> chiTieuList;
     private LayoutInflater inflater;
-    private Activity context;
+    private Context context;
     private ChiTieuDAO chiTieuDAO;
-    SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
-    public ChiTieuAdapter(Activity context, List<ChiTieu> chiTieus) {
+
+    public ChiTieuAdapter(Context context, List<ChiTieu> chiTieus) {
         this.chiTieuList = chiTieus;
         this.context = context;
-        this.inflater = (LayoutInflater) context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        this.inflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         chiTieuDAO = new ChiTieuDAO(context);
     }
 
@@ -51,6 +54,7 @@ public class ChiTieuAdapter extends BaseAdapter {
     @Override
     public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         ViewHolder holder;
+
         if (convertView == null) {
             holder = new ViewHolder();
             convertView = inflater.inflate(R.layout.item_chitieu, parent, false);
@@ -78,7 +82,8 @@ public class ChiTieuAdapter extends BaseAdapter {
         holder.tvName.setText(chiTieu.getTenChiphi());
         holder.tvSoluong.setText(chiTieu.getSoLuong()+"");
         holder.tvGiatien.setText(chiTieu.getGiaTien()+"");
-        holder.tvNgaychi.setText((chiTieu.getNgayChi()));
+        holder.tvNgaychi.setText(Common.convertDate(chiTieu.getNgayChi()));
+
         return convertView;
     }
 

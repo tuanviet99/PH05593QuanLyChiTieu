@@ -1,6 +1,4 @@
-package com.example.admin.ph05593quanlychitieu.Model;
-
-import java.util.Date;
+package com.example.admin.ph05593quanlychitieu.model;
 
 public class ChiTieu {
     private String tenChiphi;

@@ -4,7 +4,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.TextView;
 
-import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
+import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
 
 public class ThongKeActivity extends AppCompatActivity {
 

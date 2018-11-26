@@ -1,24 +1,16 @@
 package com.example.admin.ph05593quanlychitieu;
 
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
-import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Toast;
 
-import com.example.admin.ph05593quanlychitieu.Adapter.ChiTieuAdapter;
-import com.example.admin.ph05593quanlychitieu.Database.ChiTieuDAO;
-import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
+import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
+import com.example.admin.ph05593quanlychitieu.model.ChiTieu;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.GregorianCalendar;
-import java.util.List;
 
 public class ThemActivity extends AppCompatActivity {
     private EditText edName;
@@ -44,9 +36,10 @@ public class ThemActivity extends AppCompatActivity {
     public void addChitieu(View view) {
         chiTieuDAO = new ChiTieuDAO(ThemActivity.this);
         try {
-            ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()),
-                    (edNgaychi.getText().toString()));
             if (validateForm() > 0) {
+                ChiTieu chiTieu = new ChiTieu(edName.getText().toString(), Integer.parseInt(edSoluong.getText().toString()), Integer.parseInt(edGiatien.getText().toString()),
+                        (edNgaychi.getText().toString()));
+
                 if (chiTieuDAO.insertChiTieu(chiTieu) > 0) {
                     Toast.makeText(this, "Thêm thành công", Toast.LENGTH_SHORT).show();
                 } else {
@@ -69,6 +62,7 @@ public class ThemActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(), "Bạn phải nhập đầy đủ thông ", Toast.LENGTH_SHORT).show();
             check = -1;
         } else {
+
         }
         return check;
     }

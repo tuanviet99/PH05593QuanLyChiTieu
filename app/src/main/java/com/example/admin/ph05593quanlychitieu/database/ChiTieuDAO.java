@@ -1,4 +1,4 @@
-package com.example.admin.ph05593quanlychitieu.Database;
+package com.example.admin.ph05593quanlychitieu.database;
 
 import android.content.ContentValues;
 import android.content.Context;
@@ -6,7 +6,7 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.util.Log;
 
-import com.example.admin.ph05593quanlychitieu.Model.ChiTieu;
+import com.example.admin.ph05593quanlychitieu.model.ChiTieu;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -35,12 +35,12 @@ public class ChiTieuDAO {
 
     public int insertChiTieu(ChiTieu chiTieu) throws ParseException {
 
-        Log.e("DATE",sdf.format(chiTieu.getNgayChi()));
         ContentValues values = new ContentValues();
         values.put(TEN_CHI_PHI, chiTieu.getTenChiphi());
         values.put(SO_LUONG, chiTieu.getSoLuong());
         values.put(GIA_TIEN, chiTieu.getGiaTien());
         values.put(NGAY_CHI, sdf.parse(chiTieu.getNgayChi()).toString());
+        Log.e("ABC",sdf.parse(chiTieu.getNgayChi()).toString());
         try {
             if (db.insert(TABLE_NAME, null, values) == -1) {
                 return -1;
