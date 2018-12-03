@@ -8,7 +8,6 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
-
 import com.example.admin.ph05593quanlychitieu.common.Common;
 import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
 import com.example.admin.ph05593quanlychitieu.model.ChiTieu;

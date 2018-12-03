@@ -7,25 +7,15 @@
     tools:context=".ThongKeActivity"
     android:orientation="vertical">
     <TextView
-        android:id="@+id/tvThongKeNgay"
+        android:id="@+id/tvThongKe"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
         android:layout_marginTop="15dp"
-        android:text="Hôm nay"
+        android:text="Tổng chi tiêu"
         android:textColor="@color/colorPrimary"
         android:textSize="26dp"
         android:textStyle="bold" />
 
-    <TextView
-        android:id="@+id/tvThongKeThang"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="10dp"
-        android:layout_marginTop="15dp"
-        android:text="Tháng ngày"
-        android:textColor="@color/colorPrimary"
-        android:textSize="26dp"
-        android:textStyle="bold" />
 
 </LinearLayout>

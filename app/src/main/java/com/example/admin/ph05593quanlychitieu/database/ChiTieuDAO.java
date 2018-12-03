@@ -18,7 +18,7 @@ public class ChiTieuDAO {
     public DatabaseHelper dbHelper;
 
     public static final String TABLE_NAME = "ChiTieu";
-    public static final String SQL_CHI_TIEU = "CREATE TABLE ChiTieu(tenChiphi text primary key, soLuong text, giaTien text, ngayChi date)";
+    public static final String SQL_CHI_TIEU = "CREATE TABLE ChiTieu(tenChiphi text primary key, soLuong text, giaTien text, ngayChi text)";
     public static final String TAG = "StundentDAO";
     SimpleDateFormat sdf = new SimpleDateFormat("dd-MM-yyyy");
 
@@ -71,28 +71,7 @@ public class ChiTieuDAO {
         return nv;
     }
 
-    public boolean checkPrimaryKey(String strPrimaryKey) {
-        //SELECT
-        String[] columns = {TEN_CHI_PHI};
-        //WHERE clause
-        String selection = "tenChiphi=?";
-        //WHERE clause arguments
-        String[] selectionArgs = {strPrimaryKey};
-        Cursor c = null;
-        try {
-            c = db.query(TABLE_NAME, columns, selection, selectionArgs, null, null, null);
-            c.moveToFirst();
-            int i = c.getCount();
-            c.close();
-            if (i <= 0) {
-                return false;
-            }
-            return true;
-        } catch (Exception e) {
-            e.printStackTrace();
-            return false;
-        }
-    }
+
 
     public int updateChiTieu(ChiTieu chiTieu) {
         ContentValues values = new ContentValues();
@@ -111,7 +90,7 @@ public class ChiTieuDAO {
 
     public double getChiTieuTheoNgay() {
         double chiTieu = 0;
-        String sSQL = "SELECT SUM(giaTien*soLuong) FROM ChiTieu  " + " where ngayChi = date('now') GROUP BY tenChiphi";
+        String sSQL = "SELECT SUM(giaTien*soLuong) FROM ChiTieu" ;
         Cursor c = db.rawQuery(sSQL, null);
         c.moveToFirst();
         while (c.isAfterLast() == false) {
@@ -122,13 +101,13 @@ public class ChiTieuDAO {
         return chiTieu;
     }
 
-    public double getChiTieuTheoThang() {
-        double chiTieu = 0;
-        String sSQL = "SELECT SUM(giaTien * soLuong) FROM ChiTieu  " + " where ngayChi = date('now') GROUP BY tenChiphi";
-        Cursor c = db.rawQuery(sSQL, null);
-        c.close();
-        return chiTieu;
-    }
+//    public double getChiTieuTheoThang() {
+//        double chiTieu = 0;
+//        String sSQL = "SELECT SUM(giaTien * soLuong) FROM ChiTieu  " + " where ngayChi = date('now') GROUP BY tenChiphi";
+//        Cursor c = db.rawQuery(sSQL, null);
+//        c.close();
+//        return chiTieu;
+//    }
 
     //delete
     public int deleteChiTieuByID(String tenChitieu) {

@@ -8,16 +8,14 @@ import com.example.admin.ph05593quanlychitieu.database.ChiTieuDAO;
 
 public class ThongKeActivity extends AppCompatActivity {
 
-    private TextView tvThongKeNgay;
-    private TextView tvThongKeThang;
+    private TextView tvThongKe;
     private ChiTieuDAO chiTieuDAO;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_thong_ke);
-        tvThongKeNgay = (TextView) findViewById(R.id.tvThongKeNgay);
-        tvThongKeThang = (TextView) findViewById(R.id.tvThongKeThang);
+        tvThongKe = (TextView) findViewById(R.id.tvThongKe);
         chiTieuDAO=new ChiTieuDAO(this);
-        tvThongKeNgay.setText("Hôm nay:   " + chiTieuDAO.getChiTieuTheoNgay());
+        tvThongKe.setText("Tổng chi tiêu:   " + chiTieuDAO.getChiTieuTheoNgay() + " đồng ");
     }
 }
