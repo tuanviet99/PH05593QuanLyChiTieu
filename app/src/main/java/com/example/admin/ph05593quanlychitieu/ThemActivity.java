@@ -67,4 +67,7 @@ public class ThemActivity extends AppCompatActivity {
         return check;
     }
 
+    public void huy(View view) {
+        finish();
+    }
 }

@@ -81,4 +81,7 @@ public class SuaActivity extends AppCompatActivity {
         return check;
     }
 
+    public void Huy(View view) {
+        finish();
+    }
 }
