@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="horizontal"
     android:layout_margin="8dp">
 
@@ -29,12 +29,14 @@
         android:layout_height="wrap_content"
         android:text="Ngày chi"
         android:paddingLeft="208dp"/>
+
     <ImageView
+        app:layout_constraintLeft_toRightOf="@id/tvNgaychi"
+        android:layout_marginLeft="40dp"
         android:id="@+id/imgDel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:src="@drawable/ic_clear_black_24dp"
-        android:paddingLeft="320dp"/>
+        android:src="@drawable/ic_clear_black_24dp" />
 
 
 </android.support.constraint.ConstraintLayout>
